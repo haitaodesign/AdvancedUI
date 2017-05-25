@@ -11,26 +11,47 @@
 	}
 	body{
 		display: flex;
-		height: 8000px;
+		flex-direction: column;
 	}
 	.header{
 		width: 100%;
-		height: 50px;
+		height: 100px;
 		background-color:  #194945;
 	}
-	.content{
-		width: 60%;
-		height: 100%;
+	.main{
+		display: flex;
+		width: 100%;
+		flex-direction: row;
 	}
-	.slider{
-		width: 35%;
-		height: 100%;
+	.main .content{
+		position: absolute;
+		width: 80%;
+		background-color: blue;
+		top: 100px;
+		right: 300px;
+		bottom: 0;
+		left: 0;
+	}
+	.main .slider{
+		position: absolute;
+		width: 300px;
+		background-color: orange;
+	}
+	.footer{
+		position: absolute;
+		width: 100%;
+		height: 100px;
+		background-color: red;
+		bottom: 0;
+		left: 0;
 	}
 </style>
 <body>
 		<div class="header"></div>
-			<div class="content"></div>
-			<div class="slider"></div>
+			<div class="main">
+				<div class="content"></div>
+				<div class="slider"></div>
+			</div>
 		<div class="footer"></div>
 </body>
 </html>
