@@ -2,13 +2,14 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <title>响应式设计</title>
+    <<<<<<< HEAD <meta charset="UTF-8">
+        <title>响应式设计</title>
 </head>
 <style>
     * {
         margin: 0;
         padding: 0;
+        box-sizing: border-box;
     }
     
     body {
@@ -51,6 +52,74 @@
         background-color: red;
         bottom: 0;
         left: 0;
+    }
+    
+    html,
+    body {
+        height: 100%;
+        color: #fff;
+    }
+    
+    body {
+        min-width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .header,
+    .main,
+    .slider,
+    .footer {
+        display: block;
+    }
+    
+    .header {
+        min-width: 100%;
+        min-height: 100px;
+        background-color: #D11C16;
+    }
+    /* 遇到的问题？如何把中间的盒子自适应撑开？*/
+    /* 让main占据剩余的所有空间*/
+    
+    .main {
+        min-width: 100%;
+        display: flex;
+        flex-direction: row;
+        flex: 1;
+    }
+    
+    .content {
+        background-color: #BEF7E4;
+        flex: 1;
+    }
+    
+    .slider {
+        min-width: 220px;
+        background-color: #62C8A5;
+    }
+    
+    .footer {
+        min-width: 100%;
+        min-height: 100px;
+        background-color: #EE451F;
+    }
+    
+    @media screen and (min-width: 600px) and (max-width: 1024px) {
+        .slider {
+            display: none;
+        }
+    }
+    
+    @media screen and (max-width: 600px) {
+        .slider {
+            display: none;
+        }
+        .content {
+            height: 8000px;
+        }
+        .footer {
+            display: none;
+        }
     }
 </style>
 
