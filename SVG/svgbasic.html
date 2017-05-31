@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SVG基础入门</title>
+</head>
+<style>
+    .blue-group {
+        fill: blue;
+        stroke-width: 3;
+    }
+    
+    .red-group {
+        fill: red;
+        stroke-width: 4;
+        font-weight: bold;
+    }
+    
+    .green-group {
+        fill: green;
+        stroke-width: 2;
+        font-family: Arial;
+        fill-opacity: .5;
+    }
+</style>
+
+<body>
+    <h1>基本图形绘制</h1>
+    <!-- 绘制圆的基本属性
+         1.cx
+         2.cy
+         3.r
+         其他形状共有的属性
+         4.fill 内部填充色
+         5.stroke 线条颜色
+         6.stroke-width 线条宽度
+    -->
+    <svg width="500px" height="200px">
+        <text x="10"  y="20">1.绘制圆</text>
+        <!--圆-->
+        <circle cx="100" cy="50" r="20" fill="darkmagenta" stroke="black" stroke-width="5"></circle>
+    </svg>
+
+    <!-- 使用CSS只能修改样式和属性，而不能用来定义SVG的位置和尺寸
+         通过class 添加样式
+    -->
+    <svg width="800px" height="200px">
+         <circle cx="100" cy="100" r="50" 
+         style="fill:blueviolet;stroke:black;stroke-width:5px;"/>
+         <rect x="200" y="100" width="50" height="20" style="fill:aqua;"/>
+         <rect x="300" y="100" width="50" height="30" rx="10" ry="20" style="fill:cadetblue;"/>
+         <ellipse cx="400" cy="100" rx="40" ry="25" style="fill:aquamarine;"/>
+         <!-- 六边形如何画？确定六个点的坐标-->
+         <polygon points="600 100,650 0,700 100" style="fill:chartreuse;"/>
+         <line x1="500" y1="100"
+               x2="600" y2="150"
+               stroke="black"
+               stroke-width="1px"/> 
+         <!-- 路径绘制有一定的复杂度 m q l-->
+         <path d="M 500 50 q 50 -50 100 0 l -100 0"
+              fill="none" stroke="black" stroke-width="1px" />
+         <text x="300"  y="180" ><a xlink:href="https://www.baidu.com" target="_blank">Learn More!</a></text>
+    </svg>
+    <svg width="600px" height="800px">
+        <g class="blue-group" transform="scale(1.2)">
+        <text x="0"  y="20">Blue group</text>
+        <rect x="0" y="40" width="50" height="50" rx="10" ry="10"/>
+        <polygon points="80,30 70,70 130,50"/>
+        <line x1="60" y1="75"
+              x2="120" y2="90"
+              stroke="blue"/>
+        </g>
+        <g class="red-group" transform="translate(200)">
+        <text x="200"  y="20">Blue group</text>
+        <rect x="200" y="40" width="50" height="50" rx="10" ry="10"/>
+        <polygon points="280,30 270,70 330,50"/>
+        <line x1="260" y1="75"
+              x2="320" y2="90"
+              stroke="red"/>
+        </g>
+        <g class="green-group" transform="translate(300) rotate(90)">
+        <text x="400"  y="20">Blue group</text>
+        <rect x="400" y="40" width="50" height="50" rx="10" ry="10"/>
+        <polygon points="480,30 470,70 530,50"/>
+        <line x1="460" y1="75"
+              x2="520" y2="90"
+              stroke="green"/>
+        </g>
+    </svg>
+
+</body>
+
+</html>
