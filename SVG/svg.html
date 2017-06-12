@@ -12,19 +12,67 @@
     <!--<svg id="svg">
         <circle cx="100" cy="100" r="50" style=""/>
         <circle cx="200" cy="100" r="30" style="fill:red"/>
-    </svg>-->
+    <!--</svg>-->
     <svg id="svg" xmlns="http://www.w3.org/2000/svg">
     </svg>
+
+    <svg>
+        <g transform="translate(150,70)">
+             <text font-size=30  id='abc'>木马
+             <animateTransform attributeName="transform"
+            attributeType="XML"
+            type="rotate"
+            from="0"
+            to="360"
+            dur="10s"
+            repeatCount="1"/>
+            <!-- begin可以是时间1s,可以是事件，可以是时间加时间click+1s
+                与上面动画的联动
+            -->
+            <set attributeName="x" to="-10" begin="1s" />
+        </text>
+        </g>
+    </svg>
+
 </body>
 <script>
     var svg = document.getElementById('svg');
     //动态创建svg
+    //元素有命名空间，属性也有命名空间
     var yuan = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-    console.log(yuan);
     yuan.setAttribute('cx', 200);
     yuan.setAttribute('cy', 100);
     yuan.setAttribute('r', 30);
     svg.appendChild(yuan);
+
+    //自定义方法创建SVG对象
+
+    var newIMG = makeSVG('image', {
+        x: 210,
+        y: 50,
+        height: 50,
+        "xlink:href": "ttt.jpg"
+    });
+    svg.appendChild(newIMG);
+    //事件
+    newIMG.onmousedown = function(e) {
+        alert(1);
+    };
+    //封装一个Svg操作的函数
+    function makeSVG(tag, attrs) {
+        var el = document.createElementNS('http://www.w3.org/2000/svg', tag);
+        //{fill:"red",cx:110}
+        for (var k in attrs) {
+            var xmlns_xlink;
+            if (k.indexOf(":") < 0) {
+                xmlns_xlink = null;
+            } else {
+                xmlns_xlink = 'http://www.w3.org/1999/xlink';
+            }
+            el.setAttributeNS(xmlns_xlink, k, attrs[k]);
+        }
+        return el;
+    }
 </script>
 
 </html>
