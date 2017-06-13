@@ -10,8 +10,50 @@
 
 <body>
     <svg xmlns="http://www.w3c.org/2000/svg">
+        <path d="M 10 10 L 10 100 H 100 L100 10 Z" 
+        fill="none" stroke="#000" 
+        stroke-width="2px"/>
+        <circle cx="10" cy="10" r="2" fill="red"/>
+        <circle cx="10" cy="100" r="2" fill="red" />
+        <circle cx="100" cy="100" r="2" fill="red"/>
+        <circle cx="100" cy="10" r="2" style="fill:red"/>
     </svg>
-    <h1>ddd</h1>
+    <!--C命令的使用(三次贝塞尔曲线)-->
+    <svg width="500px" height="500px" xmlns="http://www.w3c.org/2000/svg">
+        <path d="M10 10 C 10 50,100 50, 100 10"
+             fill="none" stroke="#000" stroke-width="2px" />
+             <path d="M10 10 L 10 50"
+                  fill="none" stroke="red" stroke-width="2px" />
+                  <path d="M100 10 L 100 50"
+                       fill="none" stroke="red" stroke-width="2px" />
+             <circle cx="10" cy="10" r="2" style="fill:red"/>
+             <circle cx="10" cy="50" r="2" style="fill:red"/>
+             <circle cx="100" cy="10" r="2" style="fill:red"/>
+             <circle cx="100" cy="50" r="2" style="fill:red"/>
+             <!--S命令-->
+        <path d="M 10 150 C 10 80,200 50,150 150 S 100 250,290 150"
+             fill="none" stroke="#000" stroke-width="2px" />
+             <circle cx="10" cy="150" r="2" style="fill:red"/>
+             <circle cx="200" cy="50" r="2" style="fill:red"/>
+             <!--Q二次贝塞尔曲线-->
+             <path d="M10 350 Q 95 200,200 350 T 390 350"
+                  fill="none" stroke="#000" stroke-width="2px" />
+    </svg>
+    <svg width="100%" height="500px" xmlns="http://www.w3c.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <path d="M 10 400 L 200 400 C300 400,300 250, 200 250 C100 250,100 400,200 400 L 400 400"
+             fill="none" stroke="#000" stroke-width="2px" id="theMotionPath"/>
+             <!--<circle cx="300" cy="400" r="2" style="fill:red"/>
+             <circle cx="300" cy="250" r="2" style="fill:red"/>
+             <circle cx="200" cy="250" r="2" style="fill:red"/>
+             <circle cx="100" cy="250" r="2" style="fill:red"/>
+             <circle cx="100" cy="400" r="2" style="fill:red"/>-->
+             
+             <circle cx="" cy="" r="5" fill="red">
+
+             <animateMotion dur="6s" repeatCount="indefinite">
+                 <mpath xlink:href="#theMotionPath"/>
+             </animateMotion>
+    </svg>
 </body>
 
 </html>
