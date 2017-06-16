@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SVG加载动画</title>
+    <style>
+        .logo {
+            width: 40px;
+            height: 40px;
+            background-color: #333;
+            margin: 100px auto;
+            animation: fanzhuan 1.2s infinite ease-in-out;
+        }
+        
+        @keyframes fanzhuan {
+            0% {
+                transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+            }
+            50% {
+                transform: perspective(120px) rotateX(180deg) rotateY(0deg);
+            }
+            100% {
+                transform: perspective(120px) rotateX(180deg) rotateY(180deg);
+            }
+        }
+        
+        .box {
+            width: 40px;
+            height: 40px;
+            margin: 100px auto;
+        }
+        
+        .box .sub {
+            width: 33%;
+            height: 33%;
+            background-color: #333;
+            float: left;
+            animation: boxshan 1.3s infinite ease-in-out;
+        }
+        
+        @keyframes boxshan {
+            0%,
+            70%,
+            100% {
+                transform: scale(1);
+            }
+            35% {
+                transform: scale(0);
+            }
+        }
+        
+        .box .sub:nth-child(7) {
+            animation-delay: 0.1s;
+        }
+        
+        .box .sub:nth-child(4),
+        .box .sub:nth-child(8) {
+            animation-delay: 0.1s;
+        }
+        
+        .box .sub:nth-child(1),
+        .box .sub:nth-child(5),
+        .box .sub:nth-child(9) {
+            animation-delay: 0.3s;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="logo">
+
+    </div>
+
+
+    <div class="box">
+        <div class="sub"></div>
+        <div class="sub"></div>
+        <div class="sub"></div>
+        <div class="sub"></div>
+        <div class="sub"></div>
+        <div class="sub"></div>
+        <div class="sub"></div>
+        <div class="sub"></div>
+        <div class="sub"></div>
+    </div>
+
+
+    <svg width="500" height="300" xlmns="http://www.">
+        <clipPath id="c1">
+            <circle cx="200" cy="100" r="50"/>
+        </clipPath>
+        <image xlink:href="eleme.png" x="150" y="50" height="700" width="100" 
+        clip-path="url(#c1)">
+             <animateTransform attributeName="transform"
+                type="translate"
+                from="0 50"
+                to="0 0"
+                dur="0.8s"
+                repeatCount="indefinite"
+                fill="freeze"
+                values="0 0;0 50;0 0"
+                keyTimes="0; 0.5;1"/>
+                <!--<set id="s1" attributeName="y" to="-50" begin="0s;s6.end" dur="0.8s"/>
+                <set id="s2" attributeName="y" to="-150" begin="s1.end" dur="0.8s"/>
+                <set id="s3" attributeName="y" to="-250" begin="s2.end" dur="0.8s"/>
+                <set id="s4" attributeName="y" to="-450" begin="s3.end" dur="0.8s"/>
+                <set id="s5" attributeName="y" to="-550" begin="s4.end" dur="0.8s"/>
+                <set id="s6" attributeName="y" to="-650" begin="s5.end" dur="0.8s"/>-->
+                <animate
+                    attributeName="y"
+                    from="0" to="-550"
+                    dur="5.6s"
+                    repeatCount="indefinite" fill="freeze"
+                    values="50;-50;-150;-250;-350;-450;-550"
+                    keyTimes="0;0.17;0.34;0.51;0.68;0.85;1"
+                    calcMode="discrete"
+                    />
+        </image>
+
+        <g>
+            <ellipse cx="200" cy="240" rx="60" ry="30" style="fill:#d3e6ff;">
+            <animateTransform attributeName="transform"
+                type="scale"
+                from="1"
+                to="0.5"
+                dur="0.8s"
+                repeatCount="indefinite"
+                values="1;0.5;1"
+                keyTimes="0; 0.5;1"/>
+                
+                </ellipse>
+             <animateTransform attributeName="transform"
+                type="translate"
+                from="0 0"
+                to="100 120"
+                dur="0.8s"
+                repeatCount="indefinite"
+                values="0 0;100 120;1"
+                keyTimes="0; 0.5;1"/>
+        </g>
+        
+    </svg>
+    <script>
+        function sas(x, y, w, h, ra) {
+            var cx = x * 1 + w / 2;
+            var cy = y * 1 + h / 2;
+            var to_x = cx * (1 - ra);
+            var to_y = cy * (1 - ra);
+            return to_x + "," + to_y;
+        }
+    </script>
+
+    <svg width="400" height="300">
+        <circle cx="200" cy="150" r="100" 
+        style="fill:none;" stroke="#333"
+        stroke-width="5" stroke-dasharray="20,10,5,5,5,10"
+        >
+        <animateTransform attributeName="transform"
+                type="rotate"
+                from="0 200,150"
+                to="360 200,150"
+                dur="3s"
+                repeatCount="indefinite"
+                />
+        </circle>
+         
+    </svg>
+
+
+
+
+</body>
+
+</html>
